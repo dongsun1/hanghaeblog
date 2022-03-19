@@ -1,0 +1,17 @@
+#formTitle {
+  margin-top: 20px;
+}
+
+#formDesc {
+  margin-top: 10px;
+}
+
+section > footer {
+  display: flex;
+  justify-content: end;
+}
+
+#formCom {
+  width: 100px;
+  margin-top: 10px;
+}
