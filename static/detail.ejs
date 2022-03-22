@@ -27,7 +27,10 @@
     <section>
       <header>
         <h2 id="secTitle"><%=detail.title%></h2>
-        <div class="date"><%=detail.date%></div>
+        <div class="topRight">
+          <div class="writer">작성자 : <%=detail.writer %></div>
+          <div class="date">날짜 : <%=detail.date %></div>
+        </div>
       </header>
       <article>
         <p><%=detail.description%></p>
@@ -36,16 +39,11 @@
         <button class="btn btn-default" onclick="postUpdate('<%=detail._id%>')">
           수정
         </button>
-        <button class="btn btn-default" onclick="postDelete()">삭제</button>
       </footer>
     </section>
     <script>
       function postUpdate(id) {
         location.href = "/update/" + id;
-      }
-
-      function postDelete() {
-        location.href = "./posts.ejs";
       }
     </script>
   </body>

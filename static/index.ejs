@@ -38,7 +38,10 @@
         <% for (let i = posts.length - 1; i >= 0; i--) { %>
         <header>
           <a class="artTitle" href=/detail/<%=posts[i]._id%>><%=posts[i].title %></a>
-          <div class="date"><%=posts[i].date %></div>
+          <div class="topRight">
+            <div class="writer">작성자 : <%=posts[i].writer %></div>
+            <div class="date">날짜 : <%=posts[i].date %></div>
+          </div>
         </header>
         <p><%=posts[i].description %></p>
         <% } %>

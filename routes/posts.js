@@ -7,11 +7,35 @@ router.get("/", (req, res) => {
 });
 
 router.post("/post", async (req, res) => {
-  const { title, description, date } = req.body;
+  const { writer, pw, title, description, date } = req.body;
 
-  await Post.create({ title, description, date });
+  await Post.create({ writer, pw, title, description, date });
 
-  res.json({ success: true });
+  res.json({ msg: "글쓰기가 완료되었습니다." });
+});
+
+router.put("/update", async (req, res) => {
+  const { _id, writer, pw, title, description } = req.body;
+
+  const pwCheck = await Post.find({ _id, pw });
+  if (!pwCheck.length) {
+    res.json({ success: false, msg: "비밀번호가 틀렸습니다." });
+  } else {
+    await Post.updateOne({ _id }, { $set: { writer, title, description } });
+    res.json({ success: true, msg: "수정이 완료되었습니다." });
+  }
+});
+
+router.delete("/delete", async (req, res) => {
+  const { _id, pw } = req.body;
+
+  const pwCheck = await Post.find({ _id, pw });
+  if (!pwCheck.length) {
+    res.json({ success: false, msg: "비밀번호가 틀렸습니다." });
+  } else {
+    await Post.deleteOne({ _id });
+    res.json({ success: true, msg: "삭제가 완료되었습니다." });
+  }
 });
 
 module.exports = router;

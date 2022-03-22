@@ -30,3 +30,11 @@ article > header {
 .artTitle {
   font-size: 20px;
 }
+
+.topRight {
+  display: flex;
+}
+
+.date {
+  margin-left: 10px;
+}
