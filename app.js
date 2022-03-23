@@ -31,6 +31,12 @@ app.get("/", async (req, res) => {
   res.render("index.ejs", { posts });
 });
 
+app.get("/search/:keyword", async (req, res) => {
+  const keyword = req.params.keyword;
+  const posts = await Post.find({ title: { $regex: keyword } });
+  res.render("index.ejs", { posts });
+});
+
 app.get("/write", (req, res) => {
   res.render("write.ejs");
 });

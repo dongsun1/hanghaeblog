@@ -16,7 +16,6 @@ router.post("/post", async (req, res) => {
 
 router.put("/update", async (req, res) => {
   const { _id, writer, pw, title, description } = req.body;
-
   const pwCheck = await Post.find({ _id, pw });
   if (!pwCheck.length) {
     res.json({ success: false, msg: "비밀번호가 틀렸습니다." });

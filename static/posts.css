@@ -49,3 +49,7 @@ article > header {
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
+
+#searchForm {
+  display: flex;
+}

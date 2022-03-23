@@ -1,3 +1,14 @@
+function searchTitle() {
+  const keyword = $("#searchBar").val();
+
+  if (keyword === "") {
+    alert("검색어를 입력해주세요.");
+    return;
+  }
+
+  location.href = "/search/" + keyword;
+}
+
 function createPost() {
   const writer = $("#formWriter").val();
   const pw = $("#formPw").val();
@@ -38,7 +49,7 @@ function createPost() {
 
 function updatePost(id) {
   const _id = id;
-  const writer = $("formWriter").val();
+  const writer = $("#formWriter").val();
   const pw = $("#formPw").val();
   const title = $("#formTitle").val();
   const description = $("#formDesc").val();
