@@ -29,6 +29,7 @@ article > header {
 
 .artTitle {
   font-size: 20px;
+  font-weight: bold;
 }
 
 .topRight {
@@ -37,4 +38,14 @@ article > header {
 
 .date {
   margin-left: 10px;
+}
+
+.artDesc {
+  height: 100px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }

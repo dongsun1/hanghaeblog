@@ -1,6 +1,7 @@
 const express = require("express");
 const connect = require("./schemas");
 const Post = require("./schemas/post");
+const Comment = require("./schemas/comment");
 const cors = require("cors");
 const app = express();
 const port = 3000;
@@ -8,6 +9,7 @@ const port = 3000;
 connect();
 
 const postsRouter = require("./routes/posts");
+const commentsRouter = require("./routes/comments");
 
 const requestMiddleware = (req, res, next) => {
   console.log("Request URL:", req.originalUrl, " - ", new Date());
@@ -22,7 +24,7 @@ app.use(express.static("static"));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(requestMiddleware);
-app.use("/api", postsRouter);
+app.use("/api", [postsRouter, commentsRouter]);
 
 app.get("/", async (req, res) => {
   const posts = await Post.find({});
@@ -35,7 +37,8 @@ app.get("/write", (req, res) => {
 
 app.get("/detail/:id", async (req, res) => {
   const detail = await Post.findById(req.params.id);
-  res.render("detail.ejs", { detail });
+  const comment = await Comment.find({ postId: req.params.id });
+  res.render("detail.ejs", { detail, comment });
 });
 
 app.get("/update/:id", async (req, res) => {

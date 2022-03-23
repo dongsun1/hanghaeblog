@@ -2,8 +2,76 @@
   margin-bottom: 20px;
 }
 
-section > footer {
+section > article > button {
   margin-top: 20px;
+  float: right;
+}
+
+.desc {
+  line-height: 25px;
+}
+
+#commentList {
+  margin-top: 65px;
+}
+
+#commentTitle {
+  font-size: 20px;
+}
+
+.commentTop {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+}
+
+.commentWriter {
+  font-size: 20px;
+}
+
+.commentDesc {
+  margin-top: 10px;
+  margin-right: 20px;
+  line-height: 20px;
+}
+
+.commentBottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#commentForm {
+  margin-bottom: 50px;
+}
+
+#commentFormTop {
+  display: flex;
+}
+
+#commentWriter {
+  margin-right: 10px;
+}
+
+.commentWriter {
+  width: 200px;
+  line-height: 34px;
+}
+
+.commentPw {
+  width: 170px;
+  line-height: 34px;
+}
+
+#commentFormBottom {
+  margin-top: 10px;
+  display: flex;
+}
+
+#commentDesc {
+  margin-right: 10px;
+}
+
+.commentDel {
+  height: 40px;
+  float: right;
 }

@@ -17,6 +17,7 @@
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="/api.js"></script>
   </head>
   <body>
@@ -32,14 +33,67 @@
           <div class="date">날짜 : <%=detail.date %></div>
         </div>
       </header>
+      <hr />
       <article>
-        <p><%=detail.description%></p>
-      </article>
-      <footer>
+        <p class="desc"><%=detail.description%></p>
         <button class="btn btn-default" onclick="postUpdate('<%=detail._id%>')">
           수정
         </button>
-      </footer>
+      </article>
+      <div id="commentList">
+        <hr />
+        <h1 id="commentTitle">댓글</h1>
+        <% for (let i = 0; i < comment.length; i++) {%>
+        <hr />
+        <div class="commentTop">
+          <div class="commentWriter"><%=comment[i].writer%>님</div>
+          <div class="commentDate"><%=comment[i].date%></div>
+        </div>
+        <div class="commentBottom">
+          <div class="commentDesc"><%=comment[i].description%></div>
+        </div>
+        <button
+          class="btn btn-default commentDel"
+          onclick="deleteComment('<%=comment[i]._id%>')"
+        >
+          삭제
+        </button>
+        <% } %>
+      </div>
+      <hr />
+      <div id="commentForm">
+        <div id="commentFormTop">
+          <span class="commentWriter">이름</span>
+          <input
+            type="text"
+            id="commentWriter"
+            class="form-control"
+            placeholder="이름을 입력해주세요."
+          />
+          <span class="commentPw">비밀번호</span>
+          <input
+            type="password"
+            id="commentPw"
+            class="form-control"
+            placeholder="비밀번호를 입력해주세요."
+          />
+        </div>
+        <div id="commentFormBottom">
+          <input
+            type="text"
+            id="commentDesc"
+            class="form-control"
+            placeholder="댓글을 입력해주세요."
+          />
+          <button
+            class="btn btn-default"
+            id="createComment"
+            onclick="createComments('<%=detail._id%>')"
+          >
+            작성
+          </button>
+        </div>
+      </div>
     </section>
     <script>
       function postUpdate(id) {
